@@ -1,0 +1,341 @@
+/* ================================
+   ROOT VARIABLES
+================================ */
+:root {
+  --color-primary: #ad0546;
+  --color-primary-dark:#ff488e; 
+  --color-text: #1a202c;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  --color-bg: #f0f2f5;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-tag-bg: #edf2f7;
+  --radius: 16px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --transition: 0.2s ease;
+}
+
+
+/* ================================
+   RESET & BASE
+================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 24px;
+}
+
+
+/* ================================
+   SCREEN READER ONLY
+   Visually hidden but readable
+   by screen readers.
+================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* ================================
+   PROFILE CARD
+   Mobile first — single column.
+   Desktop layout added in media query.
+================================ */
+.profile-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  width: 100%;
+  max-width: 720px;
+
+  /*
+    Mobile: single column, everything stacks.
+    flex-direction: column means top to bottom.
+  */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.profile-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+
+/* ================================
+   LEFT COLUMN
+   Avatar + time.
+   Centers content on mobile.
+================================ */
+.profile-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+
+/* ================================
+   AVATAR
+================================ */
+.avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  /*
+    Ring around avatar using outline
+    and outline-offset for spacing.
+  */
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+
+  transition: outline-color var(--transition);
+}
+
+.avatar:hover {
+  outline-color: var(--color-primary-dark);
+}
+
+
+/* ================================
+   EPOCH TIME
+================================ */
+.time-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--color-tag-bg);
+  padding: 10px 16px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.time-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.epoch-time {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+  /*
+    tabular-nums makes all digits the same width.
+    This prevents the layout from jumping as
+    numbers change every millisecond.
+  */
+  word-break: break-all;
+}
+
+
+/* ================================
+   RIGHT COLUMN
+================================ */
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* ================================
+   PROFILE HEADER
+   Name + role
+================================ */
+.profile-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+}
+
+.profile-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.profile-role {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+
+/* ================================
+   BIO
+================================ */
+.profile-bio {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+
+  /*
+    word-wrap ensures long words don't
+    break the layout on small screens.
+  */
+  word-wrap: break-word;
+}
+
+
+/* ================================
+   SOCIAL LINKS
+================================ */
+.social-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: #f0eeff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.social-link:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/*
+  Visible focus ring for keyboard navigation.
+  WCAG requires focus to be clearly visible.
+*/
+.social-link:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+
+/* ================================
+   HOBBIES & DISLIKES SECTIONS
+================================ */
+.profile-section {
+  background-color: var(--color-tag-bg);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.section-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.items-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.items-list li {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background-color: var(--color-card);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  transition: border-color var(--transition);
+}
+
+.items-list li:hover {
+  border-color: var(--color-primary);
+}
+
+
+/* ================================
+   RESPONSIVE — TABLET & DESKTOP
+   When screen is 600px or wider,
+   switch to two column layout.
+================================ */
+@media (min-width: 600px) {
+  .profile-card {
+    /*
+      Switch from single column (flex-direction: column)
+      to two columns using grid.
+      "200px 1fr" means:
+      - left column: fixed 200px wide
+      - right column: takes all remaining space
+    */
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start; /* aligns columns to the top */
+  }
+
+  .profile-left {
+    /* Stick the left column to the top when scrolling */
+    position: sticky;
+    top: 24px;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (min-width: 900px) {
+  .profile-card {
+    padding: 32px;
+    grid-template-columns: 220px 1fr;
+  }
+
+  .profile-name {
+    font-size: 1.6rem;
+  }
+}

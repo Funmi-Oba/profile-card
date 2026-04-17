@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profie Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <article data-testid="test-profile-card" class="profile-card">
+      <!-- ========================
+           LEFT COLUMN
+           Avatar lives here.
+      ======================== -->
+      <div class="profile-left">
+        <!--
+          <figure> is the semantic wrapper for
+          an image that is referenced in the content.
+          <figcaption> is optional but adds context.
+        -->
+        <figure class="avatar-wrapper">
+          <img
+            data-testid="test-user-avatar"
+            class="avatar"
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Funmi"
+            alt="Profile photo of Funmi Oba"
+          />
+          <figcaption class="sr-only">Profile photo of Funmi Oba</figcaption>
+        </figure>
+
+        <!--
+          Current epoch time in milliseconds.
+          <time> is semantic for time values.
+          aria-live="polite" tells screen readers
+          to announce updates without interrupting.
+          JS will update this every second.
+        -->
+        <div class="time-wrapper">
+          <span class="time-label">Current Time (ms)</span>
+          <time
+            data-testid="test-user-time"
+            class="epoch-time"
+            aria-live="polite"
+            aria-label="Current time in milliseconds"
+          >
+            0
+          </time>
+        </div>
+      </div>
+      <!-- END LEFT COLUMN -->
+
+      <!-- ========================
+           RIGHT COLUMN
+           All info lives here.
+      ======================== -->
+      <div class="profile-right">
+        <!-- Name -->
+        <header class="profile-header">
+          <h2 data-testid="test-user-name" class="profile-name">
+            Funmilayo Oba
+          </h2>
+          <p class="profile-role">Frontend Developer</p>
+        </header>
+
+        <!-- Bio -->
+        <p data-testid="test-user-bio" class="profile-bio">
+          Passionate frontend developer who loves building clean, accessible,
+          and interactive user interfaces. Currently interning and learning
+          something new every day.
+        </p>
+
+        <!-- Social Links -->
+        <nav
+          data-testid="test-user-social-links"
+          class="social-links"
+          aria-label="Social media links"
+        >
+          <ul role="list" class="social-list">
+            <li>
+              <a
+                data-testid="test-user-social-twitter"
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label="Twitter profile"
+              >
+                Twitter
+              </a>
+            </li>
+            <li>
+              <a
+                data-testid="test-user-social-github"
+                href="https://github.com/Funmi-Oba"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label="GitHub profile"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                data-testid="test-user-social-linkedin"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label="LinkedIn profile"
+              >
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Hobbies -->
+        <section
+          data-testid="test-user-hobbies"
+          class="profile-section"
+          aria-labelledby="hobbies-heading"
+        >
+          <h3 id="hobbies-heading" class="section-heading">Hobbies</h3>
+          <ul role="list" class="items-list">
+            <li>Gaming</li>
+            <li>Reading</li>
+            <li>Music</li>
+            <li>Coding</li>
+          </ul>
+        </section>
+
+        <!-- Dislikes -->
+        <section
+          data-testid="test-user-dislikes"
+          class="profile-section"
+          aria-labelledby="dislikes-heading"
+        >
+          <h3 id="dislikes-heading" class="section-heading">Dislikes</h3>
+          <ul role="list" class="items-list">
+            <li>Bugs in production</li>
+            <li>Poor documentation</li>
+            <li>Unnecessary meetings</li>
+            <li>Boredom</li>
+          </ul>
+        </section>
+      </div>
+      <!-- END RIGHT COLUMN -->
+    </article>
+
+    <script src="script.js"></script>
+  </body>
+</html>
